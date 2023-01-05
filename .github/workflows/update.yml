@@ -26,7 +26,7 @@ jobs:
           MASTODON_BASE_URL: ${{ secrets.MASTODON_BASE_URL }}
           MASTODON_USERNAME: ${{ secrets.MASTODON_USERNAME }}
         run: |
-          python run.py -n 1 -s SimpleWeighted -t lax
+          python run.py -n 24 -s SimpleWeighted -t lax
       - name: email
         uses: dawidd6/action-send-mail@v3
         with:
