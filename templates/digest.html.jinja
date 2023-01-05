@@ -9,6 +9,7 @@
     <style type="text/css" href="style.css">
     
       body {
+          background: rgb(252, 252, 253);
           color: #55525c;
           text-align: left;
           font-family: 'Roboto', sans-serif;
@@ -31,64 +32,21 @@
           max-width: 400px;
       }
 
-      .header {
-          text-align: center;
-          width: 100%;
-          padding: 15px;
-          max-width: 400px;
-          margin-top: 30px;
-      }
-
-
-      .header .title {
-        font-size: 2.5em;
-        line-height: 1;
-        font-weight: bold;
-        margin-bottom: 8px;
-      }
-
-      .run_score {
-        display: flex;
-        flex-direction: row;
-        justify-content: center !important;
-        gap: 25px;
-      }
-
-      .run_score div {
-        display: flex;
-        flex-direction: row;
-        justify-content: right;
-        column-gap: 3px;
-        font-size: .9em;
-        padding: 5px;
-      }
-
-      .run_time.date {
-        margin-bottom: 8px;
-        font-size: .9em;
-      }
-
-      .meta_desc {
-        opacity: .5;
-      }
-
       .stream_title{
           text-align: center;
           font-weight: bold;
           padding: 10px;
-      }
-
-      .posts {
+          font-size: 2em;
       }
 
       .post {
           background-color: #fff;
           padding: 18px 20px;
-          border: 1px solid #E6E3E1;
+          border: 4px solid #E6E3E1;
           border-radius: 10px;
           display: flex;
           width: 100%;
-          max-width: 400px;
+          max-width: 360px;
           margin: 0px 5px 15px 5px;
       }
 
@@ -100,20 +58,6 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-      }
-
-      .user {
-          display: flex;
-          flex-direction: row;
-      }
-
-      .links {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 5px;
-          align-content: baseline;
-          justify-content: right;
-          flex-direction: row;
       }
 
       .links a {
@@ -143,9 +87,6 @@
           display: flex;
           flex-wrap: wrap;
           flex-direction: column;
-      }
-
-      .user>a {
       }
 
       .username {
@@ -192,7 +133,6 @@
           content: "…";
       }
 
-
       .content .invisible {
           display: none;
       }
@@ -207,11 +147,11 @@
           background-color: #e9e9f5;
           padding: 0 5px;
           border-radius: 5px;
+          color: #5d4f84;
       }
 
       .media img, .media video {
           max-width: 100%;
-          border-radius: 5px;
       }
 
       .post_footer {
@@ -219,7 +159,6 @@
           flex-wrap: wrap;
           flex-direction: row;
           justify-content: space-between;
-          font-size: .8em;
           opacity: .7;
           padding-top: 15px;
           border-top: 2px solid #e7eaec;
@@ -237,7 +176,6 @@
           padding-right: 10px;
       }
 
-
     </style>
 
   </head>
@@ -247,19 +185,6 @@
     <div id="container">
 
       <div class="blocks">
-
-        <div class="header">
-
-          <div class="title">Mastodon Digest</div>
-
-          <div class="run_time date" data-date="{{ rendered_at }}"></div>
-          <div class="run_score">
-            <div><span class="meta_desc">for the past</span><span class="meta_data">{{ hours }} hours</span></div>
-            <div><span class="meta_data">{{ scorer.lower() }}</span><span class="meta_desc">scorer</span></div>
-            <div><span class="meta_data">{{ threshold }}</span><span class="meta_desc">threshold</span></div>
-          </div>
-          
-        </div>
 
         <div class="stream">
           <div class="stream_title"><span>Posts</span></div>
