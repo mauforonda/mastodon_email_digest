@@ -32,4 +32,4 @@
                         Which post threshold criteria to use. lax = 90th percentile, normal
                         = 95th percentile, strict = 98th percentile (default: normal)
 ```
-4. Enable github actions under `Settings` → `Actions/General`,  run the action from the `Actions` tab and when it succeeds publish your digest by going to `Settings` → `Pages` and selecting to deploy from the `root` of the `gh-pages` branch. 
+4. Enable github actions under `Settings` → `Actions/General`,  run the action from the `Actions` tab. 
