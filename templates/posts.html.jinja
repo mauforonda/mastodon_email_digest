@@ -21,11 +21,6 @@
 
         </div>
 
-        <div class="links">
-          {{ post['home_link'] }}
-          {{ post['original_link'] }}
-        </div>
-
     </div>
       
     <div class="post_content">
@@ -44,7 +39,12 @@
 
     <div class="post_footer">
 
-      <div class="published date">post['created_at']</div>
+      <div class="published date">{{post['created_at']}}</div>
+
+      <div class="links">
+        {{ post['home_link'] }}
+        {{ post['original_link'] }}
+      </div>
       
       <div class="reactions">
         <span>⥄ {{post['replies_count']}}</span>
