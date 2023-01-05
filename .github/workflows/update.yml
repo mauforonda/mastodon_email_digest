@@ -1,7 +1,7 @@
 name: My Mastodon Email Digest 
 on:
   schedule:
-    - cron: '0 22 * * *'
+    - cron: '0 10 * * *'
   workflow_dispatch:
 jobs:
   update:
@@ -21,17 +21,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: run digest
+        if: 
         env:
           MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
           MASTODON_BASE_URL: ${{ secrets.MASTODON_BASE_URL }}
           MASTODON_USERNAME: ${{ secrets.MASTODON_USERNAME }}
         run: |
-          python run.py -n 24 -s SimpleWeighted -t lax
+          python run.py -n 12 -s SimpleWeighted -t lax
       - name: email
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com
-          server_port: 465
+          server_address: ${{secrets.MAIL_SERVER}}
+          server_port: ${{secrets.MAIL_SERVER_PORT}}
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Mastodon Email Digest
