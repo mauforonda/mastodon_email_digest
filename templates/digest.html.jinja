@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mastodon Digest</title>
+    <style type="text/css" href="style.css">
+    
+      body {
+          color: #55525c;
+          text-align: left;
+          font-family: 'Roboto', sans-serif;
+          font-size: 15px;
+          margin: 0px 10px;
+      }
+
+      #container {
+          display: flex;
+          justify-content: center;
+      }
+
+      .blocks {
+        line-height: 1.6;
+        
+      }
+
+      .stream {
+          width: 100%;
+          max-width: 450px;
+      }
+
+      .header {
+          text-align: center;
+          width: 100%;
+          padding: 15px;
+          max-width: 400px;
+          margin-top: 30px;
+      }
+
+
+      .header .title {
+        font-size: 2.5em;
+        line-height: 1;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      .run_score {
+        display: flex;
+        flex-direction: row;
+        justify-content: center !important;
+        gap: 25px;
+      }
+
+      .run_score div {
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        column-gap: 3px;
+        font-size: .7em;
+      }
+
+      .run_time.date {
+        margin-bottom: 8px;
+        font-size: .9em;
+      }
+
+      .meta_desc {
+        opacity: .5;
+      }
+
+      .stream_title{
+          text-align: center;
+          font-weight: bold;
+          padding: 10px;
+      }
+
+      .posts {
+          padding: 0px;
+          display: flex;
+          overflow: scroll;
+          flex-direction: row;
+          flex-wrap: wrap;
+      }
+
+      .post {
+          background-color: #fff;
+          padding: 18px 20px;
+          border: 1px solid #E6E3E1;
+          border-radius: 10px;
+          display: flex;
+          width: 100%;
+          max-width: 450px;
+          margin: 0px 5px 15px 5px;
+      }
+
+      .status {
+        width: 100%;
+      }
+
+      .post_header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .user {
+          display: flex;
+          flex-direction: row;
+      }
+
+      .links {
+          font-size: .8em;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          align-content: baseline;
+          justify-content: right;
+          flex-direction: row;
+      }
+
+      .links a {
+          background: #e7eaec;
+          padding: 2px 6px;
+          border-radius: 5px;
+          opacity: .7;
+      }
+
+      .post a {
+          text-decoration: none;
+      }
+
+      .avatar {
+          max-width: 56px;
+          min-width: 56px;
+          height: 56px;
+          margin-right: 20px;
+      }
+
+      .avatar img {
+          max-width: 100%;
+          border-radius: 20%;
+          border: 1px solid #E6E3E1;
+      }
+
+      .user a {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+          max-width: 200px;
+      }
+
+      .user>a {
+          width: 150px;
+      }
+
+      .username {
+          font-size: .85em;
+      }
+
+      .displayname {
+          font-weight: bold;
+          font-size: 1.2em;
+      }
+
+      .displayname img {
+          height: 16px;
+          width: 16px;
+          vertical-align: middle;
+          object-fit: contain;
+      }
+
+      .content {
+          color: #55525c;
+          font-size: 14px;
+          padding: 15px 15px 15px 0px;
+          overflow-wrap: break-word;
+          word-break: break-word;
+      }
+
+      .medias {
+          padding-bottom: 15px;
+          display: flex;
+          gap: 5px;
+          justify-content: center;
+      }
+
+      .content p {
+          max-width: none;
+          margin: 15px 0px;
+      }
+
+      .content a:hover, .footer a:hover, .user a:hover, .links a[href]:hover {
+          color: #4d54d1;
+      }
+
+      .ellipsis::after {
+          content: "…";
+      }
+
+
+      .content .invisible {
+          display: none;
+      }
+
+      .status a:not(.hashtag):not(.mention) span:not(.invisible){
+          font-weight: bold
+      }
+
+      .home-link, .original-link, a.hashtag, a.mention, .footer .links a {
+          text-decoration: none;
+          opacity: .8;
+          background-color: #e9e9f5;
+          padding: 0 5px;
+          border-radius: 5px;
+      }
+
+      .media img, .media video {
+          max-width: 100%;
+          border-radius: 5px;
+      }
+
+      .post_footer {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: space-between;
+          font-size: .8em;
+          opacity: .7;
+          padding-top: 15px;
+          border-top: 2px solid #e7eaec;
+      }
+
+      .post_footer .date {
+          padding-right: 10px
+      }
+
+      .post_footer .reactions span {
+          padding-right: 5px
+      }
+
+      .post_footer div {
+          padding-right: 10px;
+      }
+
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="container">
+
+      <div class="blocks">
+
+        <div class="header">
+
+          <div class="title">Mastodon Digest</div>
+
+          <div class="run_time date" data-date="{{ rendered_at }}"></div>
+          <div class="run_score">
+            <div><span class="meta_desc">for the past</span><span class="meta_data">{{ hours }} hours</span></div>
+            <div><span class="meta_data">{{ scorer.lower() }}</span><span class="meta_desc">scorer</span></div>
+            <div><span class="meta_data">{{ threshold }}</span><span class="meta_desc">threshold</span></div>
+          </div>
+          
+        </div>
+
+        <div class="stream">
+          <div class="stream_title"><span>Posts</span></div>
+          <div class="posts">
+            {% with posts=posts %}
+            {% include "posts.html.jinja" %}
+            {% endwith %}
+          </div>
+        </div>
+
+        <div class="stream">
+          <div class="stream_title"><span>Boosts</span></div>
+          <div class="posts">
+            {% with posts=boosts %}
+            {% include "posts.html.jinja" %}
+            {% endwith %}
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+    
+    <script type='text/javascript' src="style.js"></script>
+  </body>
+
+</html>

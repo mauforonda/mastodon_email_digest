@@ -1,0 +1,61 @@
+{% for post in posts %}
+
+<div class="post">
+
+  <div class="status">  
+  
+    <div class="post_header">
+
+        <div class="user">
+
+          <div class="avatar">
+            <a target="_blank" href="{{ post['account_url'] }}">
+              <img src="{{ post['account_avatar'] }}">
+            </a>
+          </div>
+        
+          <a target="_blank" href="{{ post['account_url'] }}">
+            <span class="displayname">{{ post['display_name'] }}</span>
+            <span class="username">@{{ post['username'] }}</span>
+          </a>
+
+        </div>
+
+        <div class="links">
+          {{ post['home_link'] }}
+          {{ post['original_link'] }}
+        </div>
+
+    </div>
+      
+    <div class="post_content">
+
+      <div class="content">
+	      {{ post['content'] }}
+      </div>
+
+     {% if post['media'] %}
+        <div class="medias">
+	        {{ post['media'] }}
+        </div>
+     {% endif %}
+
+    </div>
+
+    <div class="post_footer">
+
+      <div class="published date">post['created_at']</div>
+      
+      <div class="reactions">
+        <span>⥄ {{post['replies_count']}}</span>
+        <span> ↻ {{post['reblogs_count']}}</span>
+        <span>★ {{post['favourites_count']}}</span>
+      </div>
+      
+    </div>
+    
+  </div>
+
+</div>
+
+{% endfor %}
