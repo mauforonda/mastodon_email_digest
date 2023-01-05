@@ -1,8 +1,8 @@
 > An email flavor of [mastodon digest](https://github.com/mauforonda/mastodon_digest), originally forked from [hodgesmr/mastodon_digest](https://github.com/hodgesmr/mastodon_digest)
 
-![](howitlooks.png "How it would look in your inbox")
+**Mastodon Email Digest** scans posts you haven't yet seen in your timeline and sends the most popular ones to your inbox 🦣 → ✉️
 
-> **Mastodon Digest** scans posts you haven't yet seen in your timeline, finds the most popular ones and shows them to you in a pretty page. 
+![](howitlooks.png "How it would look in your inbox")
 
 ## To run your own
 
@@ -32,4 +32,7 @@
                         Which post threshold criteria to use. lax = 90th percentile, normal
                         = 95th percentile, strict = 98th percentile (default: normal)
 ```
-4. Enable github actions under `Settings` → `Actions/General`,  run the action from the `Actions` tab. 
+4. Enable github actions under `Settings` → `Actions/General`. 
+
+
+If you've set your secrets right you'll receive an email at the time you specified. And if you want to test it right away you can always go to the `Actions` tab, select the `My Mastodon Email Digest` workflow and `Run workflow`, which should send you and email in about a minute ✉️
