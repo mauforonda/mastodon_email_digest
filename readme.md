@@ -11,9 +11,11 @@
   - `MASTODON_BASE_URL`: the url of your instance, like `https://mastodon.social`
   - `MASTODON_USERNAME`: your user name, like `Gargron`
   - `MASTODON_TOKEN`: a token you request in your instance settings under `Preferences` → `Development`
-  - `MAIL_USERNAME`: your email username.
+  - `MAIL_SERVER`: `smtp.gmail.com` the server you want to send emails from, `smtp.gmail.com` if you use gmail.
+  - `MAIL_SERVER_PORT`:  the server port you want to send emails from, `465` if you use gmail.
+  - `MAIL_USERNAME`: your username in the server.
   - `MAIL_PASSWORD`: your email password. If you're using gmail, use an [app password](https://support.google.com/accounts/answer/185833?hl=en) for `Mail` and any device, after setting up 2-step verification.
-  - `MAIL_DESTINATION`: the address you want to get the digest on.
+  - `MAIL_DESTINATION`: the address you want to get the digest on, like `gargrons_inbox@gmail.com`
 3. Adjust the [github workflow](.github/workflows/update.yml) however you want
   - edit `cron` to define how often you want the digest to run
   - edit the command `python run.py -n 24 -s SimpleWeighted -t lax` with your own preferences for:
